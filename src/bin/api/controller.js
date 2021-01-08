@@ -324,6 +324,9 @@ async function getAnime(req, res) {
             genders.push(gender)
          })
          let banner = el.find('.Banner img').attr('src');
+         if(banner == 'https://monoschinos2.com/assets/img/no_image.png'){
+            banner = 'https://wallpapercrafter.com/desktop/110303-Kono-Subarashii-Sekai-ni-Shukufuku-wo-Aqua-KonoSuba-minimalism-simple-background-anime-girls.png'
+         }
          let title = el.find('h1.Title').text();
          let description = el.find(' .row .col-sm-9 .Description p').text();
          let status = el.find(' .row .col-sm-9 .Type').text().trim();
