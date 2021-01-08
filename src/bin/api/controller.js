@@ -41,10 +41,10 @@ async function getLastest(req, res) {
       })
 
       res.status(200)
-         .json({
-            animes,
-            success: true
-         })
+      .json({
+         animes,
+         success: true
+      })
 
    } catch (err) {
       res.status(500)
@@ -243,25 +243,30 @@ async function animeSearch(req, res) {
 
       $('.animes .row article').each((i, e) => {
          let el = $(e);
-         let title = el.find('h3.Title').text(),
-            img = el.find('div.Image .cover .img-fluid').attr('src'),
-            id = el.find('a.link-anime').attr('href');
-         id = id.split('/')[4];
+         let title = el.find('h3.Title').text()
+         let img = el.find('div.Image .cover .img-fluid').attr('src')
+         let id1 = el.find('a.link-anime').attr('href');
+         let id = id1.split('/')[4];
+         let category = el.find('.category').text();
+         category = category.substring(1, category.length)
+         let year = parseInt(el.find('.fecha').text());
 
          let anime = {
             title,
             id,
-            img
+            img,
+            category,
+            year
          }
-
+         
          animes.push(anime);
       })
 
       res.status(200)
-         .json({
-            animes,
-            success: true
-         })
+      .json({
+         animes,
+         success: true
+      })
 
    } catch (err) {
       res.status(500)
@@ -458,10 +463,11 @@ async function getEpisode(req, res) {
       let videosContainer = $('.Episode .content .row .TPlayer').text();
 
       $(videosContainer).each((i, e) => {
+
          let el = $(e);
 
          let video = el.attr('src');
-
+         
          if (video) {
             video = video.split('url=')[1]
             video = decodeURIComponent(video)
@@ -472,6 +478,7 @@ async function getEpisode(req, res) {
          if (video) {
             videos.push(video)
          }
+         
 
       })
       let downloads = [];
@@ -485,12 +492,14 @@ async function getEpisode(req, res) {
          let servername = sn.slice(8)
          let svn = servername.indexOf("/")
          let server = servername.slice(0, svn)
-         console.log(server)
             let down = {
                server,
                link
             }
-            downloads.push(down)
+            if (down){
+               downloads.push(down)
+            }
+           
       })
 
       res.status(200)
