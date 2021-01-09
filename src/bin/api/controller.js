@@ -473,16 +473,19 @@ async function getEpisode(req, res) {
          
          if (video) {
             video = video.split('url=')[1]
+            
             video = decodeURIComponent(video)
             video = video.split('&id')[0]
+            let videoname1 = video.replace(/www./gi, '').replace(/.com/gi, '').replace(/reproductor./gi , '')
+            let videoname2 = videoname1.slice(8)
+            let videoname3 = videoname2.indexOf("/")
+            let videoname =  videoname2.slice(0, videoname3)
+            let videoServerContainer = {
+               video,
+               videoname
+            }
+            videos.push(videoServerContainer)
          }
-
-
-         if (video) {
-            videos.push(video)
-         }
-         
-
       })
       let downloads = [];
       let downloadsContainer = $('.Episode .content .row #downloads table tbody tr');
