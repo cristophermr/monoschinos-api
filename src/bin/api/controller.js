@@ -295,7 +295,7 @@ async function getAnime(req, res) {
          let el = $(e);
          let id = el.find('a').attr('href');
          id = id.split('/')[4]
-         let title = el.find('a .Title').text();
+         let title = el.find('a .Title').text().replace(/ Sub Español/gi, '')
          let img = el.find('a .Image img').attr('src');
          let year = parseInt(el.find('.fecha').text());
 
@@ -327,7 +327,7 @@ async function getAnime(req, res) {
          if(banner == 'https://monoschinos2.com/assets/img/no_image.png'){
             banner = 'https://wallpapercrafter.com/desktop/110303-Kono-Subarashii-Sekai-ni-Shukufuku-wo-Aqua-KonoSuba-minimalism-simple-background-anime-girls.png'
          }
-         let title = el.find('h1.Title').text();
+         let title = el.find('h1.Title').text().replace(/ Sub Español/gi, '')
          let description = el.find(' .row .col-sm-9 .Description p').text();
          let status = el.find(' .row .col-sm-9 .Type').text().trim();
          let date1 = el.find(' .row .col-sm-9 .after-title:nth-child(n)').text();
