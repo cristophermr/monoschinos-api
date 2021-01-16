@@ -450,7 +450,9 @@ async function getEpisode(req, res) {
 
       const bodyResponse = await axios.get(`${apiConfig.viewEpisode}/${id}`);
       const $ = cheerio.load(bodyResponse.data);
-      let title = $('.Episode .Title-epi').text();
+      let epnum = $('.Episode .Title-epi').text();
+      let title = $('.Episode .Title-epi').text()
+      .replace('Sub Español', '')
       let animeId = id.split('-');
 
       if (animeId.includes('episodio')) {
@@ -459,7 +461,7 @@ async function getEpisode(req, res) {
          animeId = animeId.splice(0, animeId.length - 1)
       }
       animeId = `${animeId}-sub-espanol`;
-      let epNumber = title.split(' ');
+      let epNumber = epnum.split(' ');
       epNumber = parseInt(epNumber[epNumber.length - 3]);
 
       const videos = [];
