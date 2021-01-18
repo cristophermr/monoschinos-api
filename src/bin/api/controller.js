@@ -371,10 +371,9 @@ async function getAnime(req, res) {
       }
 
       res.status(200)
-         .json({
-            anime,
-            success: true
-         })
+         .json(
+            anime
+         )
 
    } catch (err) {
       res.status(500)
