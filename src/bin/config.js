@@ -1,6 +1,6 @@
 const appConfig = {
-   host: process.env.HOST || 'localhost',
-   port: process.env.PORT || 3000
+   host: process.env.HOST,
+   port: process.env.PORT
 }
 
 const apiConfig = {
