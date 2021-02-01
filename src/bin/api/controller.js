@@ -41,10 +41,9 @@ async function getLastest(req, res) {
         })
 
         res.status(200)
-            .json({
-                animes,
-                success: true
-            })
+            .json(
+                animes
+            )
 
     } catch (err) {
         res.status(500)
