@@ -1,5 +1,5 @@
 const appConfig = {
-    host: process.env.HOST || '192.168.30.105',
+    host: process.env.HOST || 'localhost',
     port: process.env.PORT || 3000
 }
 
