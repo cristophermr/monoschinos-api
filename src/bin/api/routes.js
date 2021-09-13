@@ -19,9 +19,7 @@ api.get('/', (req, res) => {
    res.status(200)
       .json({
          message: 'API Working!',
-         author: 'Miguel Vega',
-         maintainer: 'CarlosBurelo',
-         repository: 'https://github.com/carlos-burelo/monoschinos-api',
+         author: 'ViewAnime Community',
          endpoints: {
             lastest: '/lastest',
             getEmision: '/emision',

@@ -281,7 +281,6 @@ async function getAnime(req, res) {
         let {
             id
         } = req.params;
-
         const bodyResponse = await axios.get(`${apiConfig.viewAnime}/${id}`);
         const $ = cheerio.load(bodyResponse.data);
 
